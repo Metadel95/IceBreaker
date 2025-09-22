@@ -103,12 +103,10 @@ const christianTopics = [
 
 function getTopic() {
   const topicEl = document.getElementById("topic");
-  topicEl.style.opacity = 0;
-  setTimeout(() => {
-    const idx = Math.floor(Math.random() * christianTopics.length);
-    topicEl.textContent = christianTopics[idx];
-    topicEl.style.opacity = 1;
-  }, 300);
+  const randomIndex = Math.floor(Math.random() * christianTopics.length);
+  topicEl.textContent = christianTopics[randomIndex];
 }
 
-document.getElementById("topic-btn").addEventListener('click', getTopic);
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('topic-btn').addEventListener('click', getTopic);
+});
