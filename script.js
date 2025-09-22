@@ -102,12 +102,13 @@ const christianTopics = [
 ];
 
 function getTopic() {
-  const topicElement = document.getElementById("topic");
-  topicElement.style.opacity = 0; // fade out
+  const topicEl = document.getElementById("topic");
+  topicEl.style.opacity = 0;
   setTimeout(() => {
-    const randomIndex = Math.floor(Math.random() * topics.length);
-    topicElement.textContent = topics[randomIndex];
-    topicElement.style.opacity = 1; // fade in
+    const idx = Math.floor(Math.random() * christianTopics.length);
+    topicEl.textContent = christianTopics[idx];
+    topicEl.style.opacity = 1;
   }, 300);
 }
 
+document.getElementById("topic-btn").addEventListener('click', getTopic);
