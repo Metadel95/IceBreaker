@@ -15,5 +15,15 @@ const topics = [
 
 function getTopic() {
   const randomIndex = Math.floor(Math.random() * topics.length);
-  document.getElementById("topic").textContent = topics[randomIndex];
+  const topicElement = document.getElementById("topic");
+  
+  // Fade out
+  topicElement.style.opacity = 0;
+  
+  setTimeout(() => {
+    // Change text
+    topicElement.textContent = topics[randomIndex];
+    // Fade in
+    topicElement.style.opacity = 1;
+  }, 500);
 }
