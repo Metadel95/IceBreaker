@@ -1,6 +1,6 @@
 const topics = [
   "Why is daily prayer important for a Christian?",
-  "How can we practically live out 'love your neighbor' in today’s world?",
+  "How can we practically live out 'love your neighbor' in today's world?",
   "What role does the Holy Spirit play in our everyday lives?",
   "What does it mean to take up our cross daily?",
   "How do we balance faith and works?",
@@ -14,13 +14,11 @@ const topics = [
 ];
 
 function getTopic() {
-  const topicEl = document.getElementById("topic");
-  topicEl.style.opacity = 0;
+  const topicElement = document.getElementById("topic");
+  topicElement.style.opacity = 0; // fade out
   setTimeout(() => {
-    const idx = Math.floor(Math.random() * topics.length);
-    topicEl.textContent = topics[idx];
-    topicEl.style.opacity = 1;
+    const randomIndex = Math.floor(Math.random() * topics.length);
+    topicElement.textContent = topics[randomIndex];
+    topicElement.style.opacity = 1; // fade in
   }, 300);
 }
-
-document.getElementById("topic-btn").addEventListener('click', getTopic);
