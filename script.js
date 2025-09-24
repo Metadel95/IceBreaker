@@ -1,112 +1,43 @@
-const christianTopics = [
-  "Should Christians read the Bible literally or contextually?",
-  "Why are there so many Bible translations—does it change the message?",
-  "Are the Old Testament laws still relevant today?",
-  "Should Christians read non-canonical books (like the Book of Enoch)?",
-  "Why did God allow polygamy in the Old Testament but not in the New?",
-  "Is it okay to use paraphrase versions (like The Message) for Bible study?",
-  "Why are the genealogies in the Bible important?",
-  "What does it mean that the Word of God is 'living and active'?",
-  "Can Christians question or doubt parts of the Bible?",
-  "Should Christians read the Bible cover-to-cover or focus on certain books?",
-  "Is Jesus the only way to God?",
-  "Why did Jesus need to be both fully God and fully man?",
-  "Did Jesus know everything while on earth?",
-  "Is the Trinity understandable or only to be accepted by faith?",
-  "Why did Jesus cry out 'My God, why have You forsaken me?'",
-  "How does the Holy Spirit guide us today?",
-  "What does it mean to blaspheme the Holy Spirit?",
-  "Can a Christian lose the presence of the Holy Spirit?",
-  "Why didn’t Jesus write any books Himself?",
-  "Does God change His mind (like in Exodus with Moses)?",
-  "Can someone lose their salvation?",
-  "Do 'good works' matter for salvation?",
-  "What about those who never heard the Gospel—are they saved?",
-  "Is baptism necessary for salvation?",
-  "Why do Christians disagree about predestination vs free will?",
-  "What is the difference between 'believing in Jesus' and 'following Jesus'?",
-  "Does God forgive repeated sins?",
-  "Can someone be Christian without going to church?",
-  "Is repentance a one-time act or daily lifestyle?",
-  "What does 'working out your salvation with fear and trembling' mean?",
-  "Why are there so many denominations if we have one Gospel?",
-  "Should women be pastors?",
-  "Should churches use modern music styles in worship?",
-  "Is tithing mandatory for Christians today?",
-  "Should churches focus more on social justice or evangelism?",
-  "Is it okay to livestream/record church services?",
-  "Why does the early church look so different from churches today?",
-  "Should churches own expensive buildings or focus on missions?",
-  "Is it wrong to clap, dance, or shout in church?",
-  "Should communion be open to everyone or only members?",
-  "Should Christians celebrate Halloween?",
-  "Is drinking alcohol a sin?",
-  "Can Christians listen to secular music?",
-  "How should Christians approach tattoos and piercings?",
-  "Should Christians date before marriage?",
-  "Is it okay for Christians to use birth control?",
-  "Should Christians sue others in court?",
-  "Can Christians play violent video games?",
-  "Should Christians boycott companies with unbiblical values?",
-  "Is it okay for Christians to be wealthy?",
-  "Should Christians be involved in politics?",
-  "Should Christians protest or demonstrate publicly?",
-  "How should Christians approach LGBTQ+ issues?",
-  "Should Christians use social media freely or cautiously?",
-  "Is it okay for Christians to enjoy luxury lifestyles?",
-  "Should Christians send their kids to secular schools?",
-  "How should Christians respond to cancel culture?",
-  "Is nationalism compatible with Christianity?",
-  "Should Christians join labor unions or activist groups?",
-  "Is it okay to have Christian celebrities?",
-  "Can a Christian marry a non-believer?",
-  "Are prosperity gospel teachings biblical or dangerous?",
-  "Should Christians believe in modern-day prophets?",
-  "Is speaking in tongues for today?",
-  "Should Christians celebrate Christmas and Easter knowing their pagan roots?",
-  "Is it wrong to attend a Catholic/Orthodox service as a Protestant?",
-  "Should Christians use 'Yahweh' or 'Jehovah' instead of 'God'?",
-  "Are miraculous healings for today or only biblical times?",
-  "Should churches have dress codes?",
-  "Can Christians use psychology alongside the Bible for counseling?",
-  "If God is good, why is there suffering?",
-  "How do we know Christianity is true among world religions?",
-  "Can science and faith coexist?",
-  "What should Christians think about evolution?",
-  "Does the Big Bang contradict the Bible?",
-  "Why does God allow natural disasters?",
-  "Can miracles be scientifically explained?",
-  "Why would a loving God send people to hell?",
-  "Is it possible for non-Christians to live moral lives?",
-  "Why is Christianity often called exclusive?",
-  "Will there be pets/animals in heaven?",
-  "What is the difference between heaven and the new earth?",
-  "Do Christians go straight to heaven after death?",
-  "What is the mark of the beast?",
-  "Should Christians study the book of Revelation literally or symbolically?",
-  "Is hell eternal or temporary?",
-  "What does it mean to 'store up treasures in heaven'?",
-  "Who are the 144,000 mentioned in Revelation?",
-  "Will we recognize loved ones in heaven?",
-  "What does the Bible say about the rapture?",
-  "How do you know God’s will for your life?",
-  "Why is prayer sometimes unanswered?",
-  "How can Christians deal with doubt without losing faith?",
-  "Is fasting necessary for spiritual growth?",
-  "Why is forgiveness so hard, even for Christians?",
-  "Is it wrong to feel angry at God?",
-  "How can Christians balance ambition and humility?",
-  "Is it possible to be too religious?",
-  "Why do Christians still struggle with sin?",
-  "How do you measure spiritual maturity?"
-];
+// Topics organized by category
+const topics = {
+  theology: [
+    "Is Jesus the only way to God?",
+    "Why did Jesus need to be both fully God and fully man?",
+    "Should Christians read the Bible literally or contextually?",
+    "Why did Jesus cry out 'My God, why have You forsaken me?'",
+  ],
+  living: [
+    "Can Christians listen to secular music?",
+    "Should Christians date before marriage?",
+    "Is drinking alcohol a sin?",
+    "How can Christians deal with doubt without losing faith?",
+  ],
+  fun: [
+    "Will there be pets in heaven?",
+    "Should Christians celebrate Christmas despite pagan roots?",
+    "Is it wrong to clap or dance in church?",
+    "Would you rather pray in the morning 🌅 or at night 🌙?",
+  ]
+};
 
+// Function to get a random topic
 function getTopic() {
+  const category = document.getElementById("category").value;
+  let selectedTopics = [];
+
+  if (category === "all") {
+    // merge all categories into one array
+    selectedTopics = Object.values(topics).flat();
+  } else {
+    selectedTopics = topics[category];
+  }
+
   const topicEl = document.getElementById("topic");
-  const randomIndex = Math.floor(Math.random() * christianTopics.length);
-  topicEl.textContent = christianTopics[randomIndex];
+  const randomIndex = Math.floor(Math.random() * selectedTopics.length);
+  topicEl.textContent = selectedTopics[randomIndex];
 }
 
+// Event listener
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('topic-btn').addEventListener('click', getTopic);
 });
