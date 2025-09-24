@@ -26,18 +26,21 @@ function getTopic() {
   let selectedTopics = [];
 
   if (category === "all") {
-    // merge all categories into one array
     selectedTopics = Object.values(topics).flat();
   } else {
     selectedTopics = topics[category];
   }
 
   const topicEl = document.getElementById("topic");
-  const randomIndex = Math.floor(Math.random() * selectedTopics.length);
-  topicEl.textContent = selectedTopics[randomIndex];
+  if (selectedTopics.length > 0) {
+    const randomIndex = Math.floor(Math.random() * selectedTopics.length);
+    topicEl.textContent = selectedTopics[randomIndex];
+  } else {
+    topicEl.textContent = "No topics found in this category.";
+  }
 }
 
-// Event listener
+// Attach event listener once DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('topic-btn').addEventListener('click', getTopic);
 });
